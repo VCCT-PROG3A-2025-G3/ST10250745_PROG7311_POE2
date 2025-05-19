@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Employee Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-success">Welcome, Employee!</h2>
+    <p>Email: @ViewBag.Email</p>
+    <p>This is your dashboard to manage farmer profiles and system data.</p>
+
+    <div class="mt-4">
+        <a href="@Url.Action("CreateFarmer", "Employee")" class="btn btn-primary">Add Farmer Profile</a>
+    </div>
+
+    <hr class="my-4" />
+
+    <h4 class="mb-3">Filter Products</h4>
+    <form asp-controller="Product" asp-action="AllProducts" method="get" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Category</label>
+            <input type="text" name="category" class="form-control" placeholder="e.g. Solar Panels" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" name="startDate" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">End Date</label>
+            <input type="date" name="endDate" class="form-control" />
+        </div>
+        <div class="col-md-2 align-self-end">
+            <button type="submit" class="btn btn-success w-100">Filter</button>
+        </div>
+    </form>
+</div>

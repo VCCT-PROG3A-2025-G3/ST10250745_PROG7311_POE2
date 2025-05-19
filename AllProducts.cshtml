@@ -1,0 +1,62 @@
+﻿@model PROG7311POE2.Models.ProductFilterViewModel
+@{
+    ViewBag.Title = "All Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="page-title mb-4 text-center display-5">🌾 All Farm Products</h2>
+
+    <div class="filter-box mb-5">
+        <form method="get" asp-action="AllProducts" class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Category</label>
+                <input type="text" name="category" value="@Model.Category" class="form-control" placeholder="e.g. Vegetables" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">From Date</label>
+                <input type="date" name="fromDate" value="@Model.FromDate?.ToString("yyyy-MM-dd")" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">To Date</label>
+                <input type="date" name="toDate" value="@Model.ToDate?.ToString("yyyy-MM-dd")" class="form-control" />
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-success w-100">🔍 Filter</button>
+            </div>
+        </form>
+    </div>
+
+    @if (Model.FilteredProducts != null && Model.FilteredProducts.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover shadow-sm rounded-3 overflow-hidden">
+                <thead>
+                    <tr>
+                        <th scope="col">📦 Name</th>
+                        <th scope="col">🧾 Category</th>
+                        <th scope="col">📅 Production Date</th>
+                        <th scope="col">👨‍🌾 Farmer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.FilteredProducts)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@product.Name</td>
+                            <td>@product.Category</td>
+                            <td>@product.ProductionDate.ToShortDateString()</td>
+                            <td>@product.Farmer?.FullName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-4">
+            🚫 No products found matching your filters.
+        </div>
+    }
+</div>

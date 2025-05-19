@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Farmer Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary">Welcome, Farmer!</h2>
+
+    <div class="mt-4">
+        <h5>Farmer Details:</h5>
+        <ul>
+            <li><strong>Email:</strong> @ViewBag.Email</li>
+        </ul>
+    </div>
+
+    <div class="mt-4 d-flex gap-3">
+        <!-- Add Product Button -->
+        <form asp-controller="Product" asp-action="AddProduct" method="get">
+            <button type="submit" class="btn btn-success">Add Product</button>
+        </form>
+
+        <!-- View My Products Button -->
+        <form asp-controller="Product" asp-action="MyProducts" method="get">
+            <button type="submit" class="btn btn-primary">View My Products</button>
+        </form>
+    </div>
+</div>

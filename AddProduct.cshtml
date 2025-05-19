@@ -1,0 +1,35 @@
+﻿@model PROG7311POE2.Models.Product
+@{
+    ViewBag.Title = "Add Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h2 class="text-center mb-4">Add New Product</h2>
+
+                <form asp-action="AddProduct" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <input asp-for="Category" class="form-control" />
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Production Date</label>
+                        <input asp-for="ProductionDate" class="form-control" type="date" />
+                        <span asp-validation-for="ProductionDate" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Add Product</button>
+                </form>
+            </div>
+            <footer class="text-center mt-3">🚜 Freshness begins at your farm</footer>
+        </div>
+    </div>
+</div>

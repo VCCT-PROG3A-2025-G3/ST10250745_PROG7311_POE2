@@ -1,0 +1,37 @@
+﻿@model List<PROG7311POE2.Models.Product>
+
+@{
+    ViewBag.Title = "My Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary">My Products</h2>
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Production Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Category</td>
+                        <td>@product.ProductionDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No products added yet.</p>
+    }
+</div>

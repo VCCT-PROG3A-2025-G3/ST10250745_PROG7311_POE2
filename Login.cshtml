@@ -1,0 +1,38 @@
+﻿@model PROG7311POE2.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h2 class="text-center mb-4">Login</h2>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group mb-3">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group mb-4">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">Login</button>
+                }
+
+                <div class="text-center mt-3">
+                    <span>Don't have an account?</span> <a href="@Url.Action("Register")" class="text-primary">Register</a>
+                </div>
+            </div>
+            <footer class="text-center">🌱 Empowering Agri-Tech</footer>
+        </div>
+    </div>
+</div>
